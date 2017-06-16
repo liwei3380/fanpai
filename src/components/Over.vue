@@ -13,9 +13,14 @@
       </div>
       点击右上角分享给好友
     </div>
-    <div class="layer" v-show="ishowrollsucc" @click="ishowrollsucc = !ishowrollsucc">
+    <div class="layer" v-show="ishowrollsucc">
       <div class="rollresult">
         恭喜！中奖了
+        <input class="input1" v-model=username type="text" name="name"  maxlength="11" placeholder="请输入姓名">
+        <input class="input2" v-model=phone type="tel" maxlength="11" name="phone" placeholder="请输入手机号">
+        <div class="btn mybtn" @click="submit()">
+          提交
+        </div>
       </div>
     </div>
     <div class="layer" v-show="ishowrollfail" @click="ishowrollfail = !ishowrollfail">
@@ -37,6 +42,8 @@ export default {
       ishowshare: false,
       ishowrollsucc: false,
       ishowrollfail: false,
+      username: '',
+      phone: '',
     }
   },
   mounted () {
@@ -51,6 +58,19 @@ export default {
     },
     restart () {
       this.$router.push('/game')
+    },
+    submit () {
+      var phonereg = new RegExp("^1[0-9]{10}$");
+      if (this.username != '' && this.phone != '') {
+        if(!phonereg.test(this.phone)){
+            alert('手机号格式错误')
+            return;
+          }
+          alert(this.username + '-' + this.phone)
+          this.ishowrollsucc = false
+      } else {
+        alert('信息不完全')
+      }
     }
   }
 }
@@ -100,5 +120,21 @@ export default {
 }
 .rollresult{
   margin-top: 2rem;
+}
+.rollresult input{
+  width: 3.05rem;
+  height: .85rem;
+  border: 2px solid #51200D;
+  display: block;
+  margin: .15rem auto;
+  border-radius: .15rem;
+  box-sizing: border-box;
+  background: #F4D197;
+  color: #6E3923;
+  text-align: center;
+}
+.mybtn{
+  width: 25%;
+  margin: .15rem auto;
 }
 </style>

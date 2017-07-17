@@ -12,7 +12,7 @@
       <div class="rule-content">
         <div class="close" @click="isshowrule = !isshowrule"> X </div>
         <div class="rule-content-text">
-          开始，通过。。可以。。最后。。等分。。计算排名
+          点击卡牌进行翻转，如果翻转的两张卡片相同（左上角数字相加等于11），匹配成功得1分。规定时间内得分超过10分，获得一次抽奖机会
         </div>
       </div>
       

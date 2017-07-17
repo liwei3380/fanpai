@@ -48,7 +48,7 @@ export default {
   },
   mounted () {
     this.score = sessionStorage.getItem('score')
-    if (parseInt(this.score) < 6) {
+    if (parseInt(this.score) < 10) {
       this.chance = '很遗憾，当前得分不能参与抽奖'
     }
   },
